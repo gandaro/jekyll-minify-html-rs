@@ -1,0 +1,17 @@
+# Copyright (C) 2026  Svend Gundestrup
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+version: 2
+updates:
+  - package-ecosystem: bundler
+    directory: "/"
+    schedule:
+      interval: weekly
+    cooldown:
+      default-days: 7
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: weekly
+    cooldown:
+      default-days: 7

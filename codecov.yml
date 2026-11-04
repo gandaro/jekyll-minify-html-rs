@@ -1,0 +1,13 @@
+# Copyright (C) 2026  Svend Gundestrup
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+coverage:
+  status:
+    project:
+      default:
+        target: 85%
+        threshold: 1%
+    patch:
+      default:
+        target: 85%
+        threshold: 5%

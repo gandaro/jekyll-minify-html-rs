@@ -1,0 +1,69 @@
+# Copyright (C) 2025  gandaro
+# Copyright (C) 2026  Svend Gundestrup
+# SPDX-License-Identifier: MIT AND AGPL-3.0-or-later
+
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Ruby ${{ matrix.ruby }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    strategy:
+      fail-fast: false
+      matrix:
+        # Ruby 4.0 blocked: minify_html 0.18.1 requires Ruby < 3.5.dev (wilsonzlin/minify-html#278)
+        ruby: ["3.3", "3.4"]
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@de492cf36cbab201753d720ce4f4e336cd688c94 # v1.336.0
+        with:
+          ruby-version: ${{ matrix.ruby }}
+          bundler-cache: true
+
+      - name: Audit Ruby dependencies
+        run: bundle exec bundle-audit check --update
+
+      - name: Run checks
+        run: bundle exec rake ci
+
+      - name: Upload coverage to Codecov
+        if: matrix.ruby == '3.4'
+        uses: codecov/codecov-action@303a32d7a59b442fa8d48b6a1cc6825c09c847a5 # v7.1.1
+        with:
+          files: coverage/coverage.xml
+          use_oidc: true
+          fail_ci_if_error: true
+
+      - name: SonarQube Cloud scan
+        if: matrix.ruby == '3.4'
+        uses: SonarSource/sonarqube-scan-action@4d1dc0c91ee400dcf8a6dddf2f705ac36542e304 # v8.4.0
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: https://sonarcloud.io
+
+  semgrep:
+    name: Semgrep security scan
+    runs-on: ubuntu-latest
+    container:
+      image: semgrep/semgrep:1.183.0@sha256:2e45517a85e13a9cca14a2a00df6bb48affd66b8ebfae1b0991cd57578362fb0
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Run Semgrep security scan
+        env:
+          SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_APP_TOKEN }}
+        run: semgrep ci

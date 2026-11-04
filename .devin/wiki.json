@@ -1,0 +1,32 @@
+{
+  "repo_notes": [
+    { "content": "Jekyll 4 plugin (Ruby >= 3.3, < 3.5.dev) that minifies rendered HTML via the minify_html gem (post_render on pages/documents) and standalone .css files via lightningcss (site post_write at priority :high = 30)." },
+    { "content": "Fork of gandaro/jekyll-minify-html-rs, dual-licensed: upstream code MIT (LICENSE.MIT), fork work AGPL-3.0-or-later (LICENSE); every file carries an SPDX header — see AGENTS.md for the provenance table." },
+    { "content": "required_ruby_version capped < 3.5.dev because minify_html 0.18.1 declares Ruby < 3.5.dev and ships no Ruby 4.0 native binary (wilsonzlin/minify-html#278)." },
+    { "content": "CSS pipeline order: sass-converter compiles .scss first, then the post_write pass minifies every written .css; runs ahead of Fingerprint Flow (11-19) and Compress Flow (0-10)." },
+    { "content": "Config: minify_html map for inline HTML/CSS/JS minification (minify_html gem Cfg options), minify_css top-level map for standalone CSS (enabled, minify, error_recovery, targets, css_modules, scope); invalid values fail the build." },
+    { "content": "Tests are Minitest: real Jekyll site builds in tmpdirs, plus test/system/ which extracts the packaged .gem and runs a real jekyll build against it. See AGENTS.md for conventions." }
+  ],
+  "pages": [
+    {
+      "title": "Architecture Overview",
+      "purpose": "Two-hook design: page/document post_render -> minify_html (HTML + inline CSS/JS); site post_write :high -> lightningcss over site.dest/**/*.css. Config validation at registration time fails the build on bad values",
+      "page_notes": [{ "content": "Include Mermaid diagram: render -> post_render HTML minify -> write -> post_write CSS pass -> fingerprint/compress flows" }]
+    },
+    {
+      "title": "Configuration",
+      "purpose": "minify_html Cfg option table and the standalone minify_css map — enabled, minify, error_recovery, targets, css_modules, scope; filename is auto-set per file for parse-error diagnostics",
+      "parent": "Architecture Overview"
+    },
+    {
+      "title": "Testing and Quality",
+      "purpose": "Minitest unit/integration suite, SimpleCov multi-suite coverage merge, system-level packaged-gem tests, rubocop/bundler-audit/semgrep/SonarQube gates, CI matrix and the Ruby 4 blocker",
+      "parent": "Architecture Overview"
+    },
+    {
+      "title": "Release Process",
+      "purpose": "version:bump -> CHANGELOG entry -> rake release_tag[x.y.z] -> tag-triggered release workflow -> RubyGems via OIDC trusted publishing (pending publisher configured for first release)",
+      "parent": "Architecture Overview"
+    }
+  ]
+}

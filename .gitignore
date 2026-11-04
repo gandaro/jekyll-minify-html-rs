@@ -1,0 +1,9 @@
+# Copyright (C) 2025  gandaro
+# SPDX-License-Identifier: MIT
+
+/.bundle/
+/pkg/
+/coverage/
+/.ruby-lsp/
+*.gem
+.DS_Store

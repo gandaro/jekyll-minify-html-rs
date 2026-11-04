@@ -1,0 +1,59 @@
+# Copyright (C) 2025  gandaro
+# Copyright (C) 2026  Svend Gundestrup
+# SPDX-License-Identifier: MIT AND AGPL-3.0-or-later
+
+AllCops:
+  NewCops: enable
+  TargetRubyVersion: 3.3
+  SuggestExtensions: false
+  Exclude:
+    - "_site/**/*"
+    - "vendor/**/*"
+    - "node_modules/**/*"
+    - "tmp/**/*"
+    - "test/fixtures/**/*"
+
+plugins:
+  - rubocop-minitest
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/FrozenStringLiteralComment:
+  Enabled: true
+
+Style/Documentation:
+  Exclude:
+    - "lib/jekyll-minify-flow.rb"
+    - "test/**/*"
+
+Layout/LineLength:
+  Max: 120
+
+Metrics/BlockLength:
+  Exclude:
+    - "test/**/*"
+    - "*.gemspec"
+    - "Rakefile"
+
+Metrics/MethodLength:
+  Max: 20
+  Exclude:
+    - "test/**/*"
+
+Metrics/AbcSize:
+  Max: 20
+  Exclude:
+    - "test/**/*"
+
+Metrics/ClassLength:
+  Exclude:
+    - "test/**/*"
+
+Minitest/MultipleAssertions:
+  Enabled: false
+
+Naming/FileName:
+  Exclude:
+    - "lib/jekyll-minify-flow.rb"
+    - "jekyll-minify-flow.gemspec"

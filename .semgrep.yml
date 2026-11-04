@@ -1,0 +1,36 @@
+# Copyright (C) 2026  Svend Gundestrup
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# Semgrep configuration for jekyll-minify-flow
+# https://semgrep.dev/docs/
+#
+# This file contains local custom rules used by the pre-commit hook.
+# The CI job runs `semgrep ci` which uses the organization's full policy
+# (2,900+ rules from Semgrep AppSec Platform, including Pro engine rules).
+#
+# Local usage:
+#   semgrep scan --config .semgrep.yml --error lib/   # custom rules only
+#   semgrep ci --dry-run                              # full org policy, no upload
+#   semgrep ci                                        # full org policy, upload to dashboard
+#
+# Findings are triaged on the Semgrep AppSec Platform dashboard.
+# False positives and acceptable risks are annotated inline with:
+#   # nosemgrep: full.rule.id
+#   # <justification>
+
+rules:
+  # Detect String#scan with unanchored polynomial regex (ReDoS).
+  # Excludes StringScanner#scan, which advances positionally and cannot backtrack.
+  - id: ruby-redos-string-scan
+    languages: [ruby]
+    severity: WARNING
+    message: "String#scan with unanchored polynomial regex may cause ReDoS"
+    patterns:
+      - pattern: $X.scan($REGEX)
+      - pattern-not-regex: 'scanner\.scan\('
+      - pattern-not: $X.scan("$LITERAL")
+    options:
+      symbolic_propagation: true
+    metavariable-analysis:
+      analyzer: redos
+      metavariable: $REGEX
