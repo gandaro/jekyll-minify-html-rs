@@ -7,6 +7,7 @@
 require "jekyll"
 require "lightningcss"
 require "minify_html"
+require "oxc"
 require_relative "jekyll_minify_flow/version"
 
 module JekyllMinifyFlow
@@ -21,6 +22,9 @@ module JekyllMinifyFlow
 
   DEFAULT_CSS_OPTIONS = { enabled: true, minify: true }.freeze
   CSS_OPTION_NAMES = %w[enabled minify error_recovery targets css_modules scope].freeze
+
+  DEFAULT_JS_OPTIONS = { enabled: true, error_recovery: false }.freeze
+  JS_OPTION_NAMES = %w[enabled error_recovery compress mangle].freeze
 
   def self.options_for(site)
     configured = site.config.fetch("minify_html", {})
@@ -76,6 +80,43 @@ module JekyllMinifyFlow
       raise Jekyll::Errors::FatalException, "minify_css failed: #{e.message}"
     end
   end
+
+  def self.js_options_for(site)
+    configured = site.config.fetch("minify_js", {})
+    raise Jekyll::Errors::FatalException, "minify_js must be a map of options" unless configured.is_a?(Hash)
+
+    configured.each_with_object(DEFAULT_JS_OPTIONS.dup) do |(key, value), options|
+      name = key.to_s
+      raise Jekyll::Errors::FatalException, "unknown minify_js option: #{name}" unless JS_OPTION_NAMES.include?(name)
+      unless valid_js_option?(name, value)
+        raise Jekyll::Errors::FatalException, "minify_js.#{name} has invalid value: #{value.inspect}"
+      end
+
+      options[name.to_sym] = value
+    end
+  end
+
+  def self.valid_js_option?(name, value)
+    case name
+    when "enabled", "error_recovery" then [true, false].include?(value)
+    when "compress", "mangle" then [true, false].include?(value) || value.is_a?(Hash)
+    end
+  end
+
+  def self.minify_js_files(site)
+    options = js_options_for(site)
+    return unless options.delete(:enabled)
+
+    error_recovery = options.delete(:error_recovery)
+    Dir.glob(File.join(site.dest, "**/*.js")).each do |path|
+      result = Oxc.minify(File.read(path), filename: path, **options)
+      File.write(path, result.code)
+    rescue Oxc::Error => e
+      raise Jekyll::Errors::FatalException, "minify_js failed: #{path}: #{e.message}" unless error_recovery
+
+      Jekyll.logger.warn "MinifyFlow:", "skipping #{path}: #{e.message}"
+    end
+  end
 end
 
 Jekyll::Hooks.register [:pages, :documents], :post_render do |doc|
@@ -86,4 +127,5 @@ end
 
 Jekyll::Hooks.register :site, :post_write, priority: :high do |site|
   JekyllMinifyFlow.minify_css_files(site)
+  JekyllMinifyFlow.minify_js_files(site)
 end

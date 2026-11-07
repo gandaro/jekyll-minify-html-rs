@@ -287,3 +287,97 @@ class MinifyCssTest < JekyllMinifyFlowTest
     assert_includes second, "body{color:red}"
   end
 end
+
+class MinifyJsTest < JekyllMinifyFlowTest
+  def test_minifies_standalone_js_files_after_site_write
+    js = "function greet() {\n  const msg = \"hello\";\n  console.log(msg);\n}\n"
+
+    build_site({}, "app.js" => js) do |_site, output_files|
+      assert_equal "function greet(){console.log(`hello`)}", output_files.read("app.js")
+    end
+  end
+
+  def test_minifies_js_in_subdirectories
+    js = "var x = 1;   var y = 2;\n"
+
+    build_site({}, "assets/js/app.js" => js) do |_site, output_files|
+      assert_equal "var x=1,y=2;", output_files.read("assets/js/app.js")
+    end
+  end
+
+  def test_leaves_js_files_untouched_when_minify_js_enabled_is_false
+    js = "function greet() {\n  const msg = \"hello\";\n  console.log(msg);\n}\n"
+
+    build_site({ "minify_js" => { "enabled" => false } }, "app.js" => js) do |_site, output_files|
+      assert_equal js, output_files.read("app.js")
+    end
+  end
+
+  def test_preserves_identifiers_when_minify_js_mangle_is_disabled
+    js = "function add(first, second) { return first + second; }\n"
+
+    build_site({ "minify_js" => { "mangle" => false } }, "app.js" => js) do |_site, output_files|
+      assert_equal "function add(first,second){return first+second}", output_files.read("app.js")
+    end
+  end
+
+  def test_keeps_separate_declarations_when_minify_js_compress_is_disabled
+    js = "var x = 1; var y = 2; console.log(x + y);\n"
+
+    build_site({ "minify_js" => { "compress" => false } }, "app.js" => js) do |_site, output_files|
+      assert_equal "var x=1;var y=2;console.log(x+y);", output_files.read("app.js")
+    end
+  end
+
+  def test_minifies_js_before_fingerprint_priority_post_write_hooks
+    active = true
+    snapshot = nil
+    Jekyll::Hooks.register(:site, :post_write, priority: 12) do |site|
+      snapshot = File.read(File.join(site.dest, "app.js")) if active
+    end
+
+    build_site({}, "app.js" => "var x = 1;\n")
+
+    assert_equal "var x=1;", snapshot
+  ensure
+    # hooks can't be unregistered, so the probe deactivates instead
+    active = false
+  end
+
+  def test_fails_the_build_on_unparseable_javascript_by_default
+    error = assert_raises(JekyllTestHarness::SiteBuildError) do
+      build_site({}, "app.js" => "function broken( {\n")
+    end
+    assert_match(/minify_js failed.*app\.js/, error.message)
+  end
+
+  def test_skips_unparseable_javascript_when_minify_js_error_recovery_is_enabled
+    js = "function broken( {\n"
+
+    build_site(
+      { "minify_js" => { "error_recovery" => true } },
+      "app.js" => js
+    ) do |_site, output_files|
+      assert_equal js, output_files.read("app.js")
+    end
+  end
+
+  def test_rejects_a_non_hash_minify_js_config
+    error = assert_raises(JekyllTestHarness::SiteBuildError) { build_site("minify_js" => true) }
+    assert_match(/minify_js must be a map/, error.message)
+  end
+
+  def test_rejects_unknown_minify_js_options
+    error = assert_raises(JekyllTestHarness::SiteBuildError) do
+      build_site("minify_js" => { "enabeld" => false })
+    end
+    assert_match(/enabeld/, error.message)
+  end
+
+  def test_rejects_invalid_minify_js_values
+    error = assert_raises(JekyllTestHarness::SiteBuildError) do
+      build_site("minify_js" => { "enabled" => "yes" })
+    end
+    assert_match(/enabled/, error.message)
+  end
+end

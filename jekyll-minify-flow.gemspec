@@ -27,4 +27,5 @@ Gem::Specification.new do |s|
   s.add_dependency "jekyll", ">= 4.4", "< 5.0"
   s.add_dependency "lightningcss", "~> 1.33"
   s.add_dependency "minify_html", "~> 0.18.1"
+  s.add_dependency "oxc", "~> 0.156"
 end

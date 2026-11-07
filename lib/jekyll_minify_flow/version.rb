@@ -4,5 +4,5 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 module JekyllMinifyFlow
-  VERSION = "1.1.0"
+  VERSION = "1.2.0"
 end

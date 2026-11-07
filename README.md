@@ -97,7 +97,35 @@ minify_css:
 name the right source. Unparseable CSS fails the build with a
 `FatalException` naming the file unless `error_recovery` is enabled.
 
-The plugin runs at page/document `post_render`, and the CSS pass at site
+### Standalone JavaScript
+
+Every `.js` file Jekyll writes to the destination is minified with
+[Oxc](https://oxc.rs) (via the `oxc` gem — Rust, no JavaScript runtime) after
+the site is written. Compression and identifier mangling are both on by
+default. A `minify_js` map in `_config.yml` adjusts the behavior (this map is
+separate from `minify_html.minify_js`, which only covers JavaScript embedded
+in HTML):
+
+```yaml
+minify_js:
+  enabled: true
+  error_recovery: false
+  compress: true
+  mangle: true
+```
+
+| Option | Type | Default | Description |
+|--------|------|---------|-------------|
+| `enabled` | `bool` | `true` | Minify standalone `.js` files |
+| `error_recovery` | `bool` | `false` | Warn and skip files that fail to parse, instead of failing the build |
+| `compress` | `bool` or `map` | `true` | Oxc compress passes (dead-code removal, expression folding) |
+| `mangle` | `bool` or `map` | `true` | Rename local identifiers to short names |
+
+`filename` is always set to the file being processed. Unparseable JavaScript
+fails the build with a `FatalException` naming the file unless
+`error_recovery` is enabled.
+
+The plugin runs at page/document `post_render`, and the CSS/JS passes at site
 `post_write` with priority `:high`, so both run before site `post_write`
 hooks such as Fingerprint Flow (priority 12) and Compress Flow (priority 10).
 Fingerprinting therefore sees rendered, minified HTML and CSS; compression

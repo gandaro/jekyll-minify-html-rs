@@ -8,6 +8,19 @@ SPDX-License-Identifier: MIT AND AGPL-3.0-or-later
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.0] - 2026-11-07
+
+### Added
+
+- **Standalone JavaScript minification.** Every `.js` file written to the
+  destination is minified with [Oxc](https://oxc.rs) (Rust bindings via the
+  `oxc` gem — compression and identifier mangling on by default, no
+  JavaScript runtime required). Runs in the same site `post_write` priority
+  `:high` pass as the CSS step, ahead of Fingerprint Flow and Compress Flow.
+  Configured via a new `minify_js` map (`enabled`, `error_recovery`,
+  `compress`, `mangle`) — separate from `minify_html.minify_js`, which only
+  covers JavaScript embedded in HTML.
+
 ## [1.1.0] - 2026-10-21
 
 First release as **`jekyll-minify-flow`** — a fork of

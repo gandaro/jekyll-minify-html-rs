@@ -1,10 +1,11 @@
 PATH
   remote: .
   specs:
-    jekyll-minify-flow (1.1.0)
+    jekyll-minify-flow (1.2.0)
       jekyll (>= 4.4, < 5.0)
       lightningcss (~> 1.33)
       minify_html (~> 0.18.1)
+      oxc (~> 0.156)
 
 GEM
   remote: https://rubygems.org/
@@ -106,6 +107,12 @@ GEM
     minitest (6.0.6)
       drb (~> 2.0)
       prism (~> 1.5)
+    oxc (0.157.0-aarch64-linux-gnu)
+    oxc (0.157.0-aarch64-linux-musl)
+    oxc (0.157.0-arm64-darwin)
+    oxc (0.157.0-x86_64-darwin)
+    oxc (0.157.0-x86_64-linux-gnu)
+    oxc (0.157.0-x86_64-linux-musl)
     parallel (2.3.0)
     parser (3.3.13.0)
       ast (~> 2.4.1)
@@ -220,7 +227,7 @@ CHECKSUMS
   http_parser.rb (0.8.1) sha256=9ae8df145b39aa5398b2f90090d651c67bd8e2ebfe4507c966579f641e11097a
   i18n (1.15.2) sha256=00f9eb62412fe593b2a65a97daa75300d37abb8f7202ec748e94b6d46a9dd1b5
   jekyll (4.4.1) sha256=4c1144d857a5b2b80d45b8cf5138289579a9f8136aadfa6dd684b31fe2bc18c1
-  jekyll-minify-flow (1.1.0)
+  jekyll-minify-flow (1.2.0)
   jekyll-sass-converter (3.1.0) sha256=83925d84f1d134410c11d0c6643b0093e82e3a3cf127e90757a85294a3862443
   jekyll-test-harness (0.1.0.alpha) sha256=2b134cbe6c4db4f3a7a6d9e0be8b53ba18767c3c44a95366886924a306bfd98c
   jekyll-watch (2.2.1) sha256=bc44ed43f5e0a552836245a54dbff3ea7421ecc2856707e8a1ee203a8387a7e1
@@ -244,6 +251,12 @@ CHECKSUMS
   minify_html (0.18.1-x86_64-darwin) sha256=0ae3b905521fd86766a54ad4371b9803466d1b071b1f7cdd68d49f96b07c6cd8
   minify_html (0.18.1-x86_64-linux) sha256=ad0b00d9effc33ac79d4f4801866ece34f48408abed1d1a0b3cf9f5afd49117f
   minitest (6.0.6) sha256=153ea36d1d987a62942382b61075745042a2b3123b1cd48f4c3675af9cc7d6f1
+  oxc (0.157.0-aarch64-linux-gnu) sha256=8ce02b1bf56435ea206a96c5dd670e3dfbcd12765b7233f51cb9de4b13ea1b66
+  oxc (0.157.0-aarch64-linux-musl) sha256=953e5442e840e58966174c09fabda65e1370be5f1df8affbe34309440b31bfdc
+  oxc (0.157.0-arm64-darwin) sha256=b8ac4fb5b15f92be9334c6f5e6670a24e08331961b574f26fad935a88d11b22e
+  oxc (0.157.0-x86_64-darwin) sha256=9e068a29188ff8bd8b0938a418dbcba5d313d028d167716003e6c47023f11df7
+  oxc (0.157.0-x86_64-linux-gnu) sha256=e5f463f65b46f606ed694c63c42f10465b48c18f35f18b80e51463d1aaf2e0ee
+  oxc (0.157.0-x86_64-linux-musl) sha256=e907a334b4051a61ccd3c143f0c05f80066e97d5e2788599359af4ec86b35cce
   parallel (2.3.0) sha256=f75a3e904101ce6a1ccb6b8dc800cbafd42166d83330192438dcf29395167a6f
   parser (3.3.13.0) sha256=e02f9b63c2fe05b0c68f692ba4df89b3cb113b663964f75d988fbebfd6c3deca
   pathutil (0.16.2) sha256=e43b74365631cab4f6d5e4228f812927efc9cb2c71e62976edcb252ee948d589
