@@ -21,6 +21,19 @@ SPDX-License-Identifier: MIT AND AGPL-3.0-or-later
 
 This Jekyll plugin uses [minify-html](https://crates.io/crates/minify-html) to minify rendered HTML pages and documents, and [Lightning CSS](https://lightningcss.dev) to minify standalone `.css` files. Static HTML files without front matter are copied unchanged by Jekyll.
 
+<!-- markdownlint-disable MD033 -->
+<picture>
+  <source
+    srcset="docs/assets/jekyll-minify-flow-demo.avif"
+    type="image/avif">
+  <source
+    srcset="docs/assets/jekyll-minify-flow-demo.webp"
+    type="image/webp">
+  <img src="docs/assets/jekyll-minify-flow-demo.png"
+       alt="jekyll-minify-flow demo">
+</picture>
+<!-- markdownlint-enable MD033 -->
+
 ## Installation
 
 ```rb

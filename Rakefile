@@ -122,3 +122,8 @@ task :release_tag, [:version] do |_, args|
   sh "git push origin main v#{v}"
   puts "Tagged and pushed v#{v} — the release workflow builds and publishes to RubyGems via trusted publishing."
 end
+
+desc "Generate docs/assets demo captures (needs Chrome, ffmpeg, img2webp)"
+task "docs:demo" do
+  sh "scripts/docs-demo.sh"
+end

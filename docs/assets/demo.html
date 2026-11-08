@@ -1,0 +1,25 @@
+<!--
+Copyright (C) 2026  Svend Gundestrup
+SPDX-License-Identifier: AGPL-3.0-or-later
+-->
+<!doctype html><html><head><meta charset="utf-8"><style>body{font-family:system-ui,sans-serif;margin:0;padding:26px 32px;background:#fafafa;color:#1f2937}
+h1{font-size:19px;margin:0 0 4px}h2{font-size:13px;color:#6b7280;margin:0 0 22px;font-weight:500}
+section{background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:13px 18px;margin-bottom:13px}
+.row{display:flex;gap:22px;align-items:center;flex-wrap:wrap}
+code{font:12px/1.5 ui-monospace,monospace;background:#f3f4f6;padding:2px 6px;border-radius:4px;color:#6b21a8;white-space:pre}
+.pill{background:#eef2ff;color:#4338ca;border-radius:12px;padding:2px 10px;font-size:12px}
+.small{color:#9ca3af;font-size:11px}
+body[data-step="1"] .s1,body[data-step="2"] .s2,body[data-step="3"] .s3{outline:3px solid #a78bfa;outline-offset:-3px}
+body[data-step="1"] .s2,body[data-step="1"] .s3,body[data-step="2"] .s3{opacity:.45}</style></head><body>
+<h1>jekyll-minify-flow</h1>
+<h2>Oxc + lightningcss minification for HTML, CSS, and standalone JS</h2>
+<p class="small">Illustrative overview; examples are schematic, not generated from a build.</p>
+
+<section class="s1"><div class="row"><code>&lt;div class="card"&gt;
+    &lt;p&gt;Hello &lt;/p&gt;
+&lt;/div&gt;</code><span class="pill">→</span><code>&lt;div class=card&gt;&lt;p&gt;Hello</code></div></section>
+<section class="s2"><div class="row"><span class="pill">HTML</span><span class="pill">CSS</span><span class="pill">JS</span><span class="small">Oxc compress+mangle on every written .js file</span></div></section>
+<section class="s3"><code>minify_js:
+  compress: true   mangle: true   error_recovery: false</code></section>
+<script>document.body.dataset.step=new URLSearchParams(location.search).get("step")||"0"</script>
+</body></html>
