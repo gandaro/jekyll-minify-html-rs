@@ -8,6 +8,15 @@ SPDX-License-Identifier: MIT AND AGPL-3.0-or-later
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Changed
+
+- In-range gem updates: `addressable` 2.9.1 → 2.9.2, `minitest`
+  6.0.6 → 6.1.0, `sass-embedded` 1.107.0 → 1.108.1,
+  `lightningcss` 1.33.0.2 → 1.33.0.3; `BUNDLED WITH` 4.0.23 → 4.0.24.
+- CI: `ruby/setup-ruby` pin bumped v1.335.0 → v1.338.0.
+
 ## [1.2.0] - 2026-11-07
 
 ### Added

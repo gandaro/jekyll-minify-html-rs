@@ -10,7 +10,7 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
-    addressable (2.9.1)
+    addressable (2.9.2)
       public_suffix (>= 2.0.2, < 8.0)
     ast (2.4.3)
     base64 (0.3.0)
@@ -86,12 +86,12 @@ GEM
     kramdown-parser-gfm (1.1.0)
       kramdown (~> 2.0)
     language_server-protocol (3.17.0.6)
-    lightningcss (1.33.0.2-aarch64-linux-gnu)
-    lightningcss (1.33.0.2-aarch64-linux-musl)
-    lightningcss (1.33.0.2-arm64-darwin)
-    lightningcss (1.33.0.2-x86_64-darwin)
-    lightningcss (1.33.0.2-x86_64-linux-gnu)
-    lightningcss (1.33.0.2-x86_64-linux-musl)
+    lightningcss (1.33.0.3-aarch64-linux-gnu)
+    lightningcss (1.33.0.3-aarch64-linux-musl)
+    lightningcss (1.33.0.3-arm64-darwin)
+    lightningcss (1.33.0.3-x86_64-darwin)
+    lightningcss (1.33.0.3-x86_64-linux-gnu)
+    lightningcss (1.33.0.3-x86_64-linux-musl)
     lint_roller (1.1.0)
     liquid (4.0.4)
     listen (3.10.1)
@@ -104,9 +104,9 @@ GEM
     minify_html (0.18.1-arm64-darwin)
     minify_html (0.18.1-x86_64-darwin)
     minify_html (0.18.1-x86_64-linux)
-    minitest (6.0.6)
+    minitest (6.1.0)
       drb (~> 2.0)
-      prism (~> 1.5)
+      prism (>= 1.5, < 3)
     oxc (0.157.0-aarch64-linux-gnu)
     oxc (0.157.0-aarch64-linux-musl)
     oxc (0.157.0-arm64-darwin)
@@ -150,17 +150,17 @@ GEM
       rubocop-ast (>= 1.38.0, < 2.0)
     ruby-progressbar (1.13.0)
     safe_yaml (1.0.5)
-    sass-embedded (1.107.0-aarch64-linux-gnu)
+    sass-embedded (1.108.1-aarch64-linux-gnu)
       google-protobuf (~> 4.31)
-    sass-embedded (1.107.0-aarch64-linux-musl)
+    sass-embedded (1.108.1-aarch64-linux-musl)
       google-protobuf (~> 4.31)
-    sass-embedded (1.107.0-arm64-darwin)
+    sass-embedded (1.108.1-arm64-darwin)
       google-protobuf (~> 4.31)
-    sass-embedded (1.107.0-x86_64-darwin)
+    sass-embedded (1.108.1-x86_64-darwin)
       google-protobuf (~> 4.31)
-    sass-embedded (1.107.0-x86_64-linux-gnu)
+    sass-embedded (1.108.1-x86_64-linux-gnu)
       google-protobuf (~> 4.31)
-    sass-embedded (1.107.0-x86_64-linux-musl)
+    sass-embedded (1.108.1-x86_64-linux-musl)
       google-protobuf (~> 4.31)
     simplecov (1.3.2)
     simplecov-cobertura (4.0.0)
@@ -198,11 +198,11 @@ DEPENDENCIES
   tmpdir
 
 CHECKSUMS
-  addressable (2.9.1) sha256=f1212365945455c84e8d031eea40fc6bedf0c663a78d95b3ab93591040bc5c35
+  addressable (2.9.2) sha256=9117c7e7d6ee07230e75ce41fb9401ae55354dc654fcd0e862ba41d539e9a610
   ast (2.4.3) sha256=954615157c1d6a382bc27d690d973195e79db7f55e9765ac7c481c60bdb4d383
   base64 (0.3.0) sha256=27337aeabad6ffae05c265c450490628ef3ebd4b67be58257393227588f5a97b
   bigdecimal (4.1.3) sha256=61ebe1e5e559bdc3cc6f2c0ee7f427321fc838f59611c294356eb04d6e21cf66
-  bundler (4.0.23) sha256=407ba8a1d928f412847f819aa5f8b6aef7c59fb51feb517112af8a165487287b
+  bundler (4.0.24) sha256=16ca64e20816a0cf151a948fb141d788602996d2b4d73577b74388fe84fa98bc
   bundler-audit (0.9.3) sha256=81c8766c71e47d0d28a0f98c7eed028539f21a6ea3cd8f685eb6f42333c9b4e9
   colorator (1.1.0) sha256=e2f85daf57af47d740db2a32191d1bdfb0f6503a0dfbc8327d0c9154d5ddfc38
   concurrent-ruby (1.3.8) sha256=b2f1be836e968ccc78ccfce277ea79c72a88633f22306782c16ff23fb415d1e1
@@ -235,12 +235,12 @@ CHECKSUMS
   kramdown (2.5.2) sha256=1ba542204c66b6f9111ff00dcc26075b95b220b07f2905d8261740c82f7f02fa
   kramdown-parser-gfm (1.1.0) sha256=fb39745516427d2988543bf01fc4cf0ab1149476382393e0e9c48592f6581729
   language_server-protocol (3.17.0.6) sha256=5ef2c0c138f8267e1bc631d3328347d354f96724b0af22f2c79516120443b7f0
-  lightningcss (1.33.0.2-aarch64-linux-gnu) sha256=1240e16ad6e5a47f23f042622ed2eed7def58043cf87803b1f7ae9029c039cb8
-  lightningcss (1.33.0.2-aarch64-linux-musl) sha256=158ad3554028b2ae5f179f68d65b4e8fb501491bdc5834b8e99d3aee547ced79
-  lightningcss (1.33.0.2-arm64-darwin) sha256=7ad09f91185f66712f0bbfb5376afea7c19c1dd80b7acc9e89b3a0ff32c3a9b0
-  lightningcss (1.33.0.2-x86_64-darwin) sha256=aadcbabdb2fdc489bbba1c8dcb20e440b6d312efb031a60aa0bb7b4c259094af
-  lightningcss (1.33.0.2-x86_64-linux-gnu) sha256=1250fe2f3b3ac23ad40e8a5038eae6304192a2df27740dd91b50f8c5b188dd73
-  lightningcss (1.33.0.2-x86_64-linux-musl) sha256=6d50341945d90a845d01db7d5fd5df8d47b2426390f0581bcf7258a203b8aaa9
+  lightningcss (1.33.0.3-aarch64-linux-gnu) sha256=ac90f2f94163c62fdf04bb65d7c94c258e6d74e7e449187588836a1e10312d26
+  lightningcss (1.33.0.3-aarch64-linux-musl) sha256=1951cd2a4e21d5053d1ab606251d02d7311597e6513418497946a9cdf50e43af
+  lightningcss (1.33.0.3-arm64-darwin) sha256=dd99b7eb31682fe181459d9c42e9c07fbb5ecfb9c1c395f1cf077e0b842744fe
+  lightningcss (1.33.0.3-x86_64-darwin) sha256=23a586e35a60915a50762fe3190b1f71d09c4ecc8a9d83dd2692aea5fa757810
+  lightningcss (1.33.0.3-x86_64-linux-gnu) sha256=e47bb3afb95bf8cec7c7b3ccaeda66b2d4c292e7312e6d6334bdbc34c0b2de8c
+  lightningcss (1.33.0.3-x86_64-linux-musl) sha256=aee026d79820c69beef2333f20561ca11598b5ec8e7ee90fca1c2de8cf035cd3
   lint_roller (1.1.0) sha256=2c0c845b632a7d172cb849cc90c1bce937a28c5c8ccccb50dfd46a485003cc87
   liquid (4.0.4) sha256=4fcfebb1a045e47918388dbb7a0925e7c3893e58d2bd6c3b3c73ec17a2d8fdb3
   listen (3.10.1) sha256=4c3f32855657f348747da4dd2372ff3790d90a6b1d3e4f21a3706adb2d04783c
@@ -250,7 +250,7 @@ CHECKSUMS
   minify_html (0.18.1-arm64-darwin) sha256=ddf6ac005f0bee291097390a87bb239dfc14912e8cf59496f33e878073c40cc7
   minify_html (0.18.1-x86_64-darwin) sha256=0ae3b905521fd86766a54ad4371b9803466d1b071b1f7cdd68d49f96b07c6cd8
   minify_html (0.18.1-x86_64-linux) sha256=ad0b00d9effc33ac79d4f4801866ece34f48408abed1d1a0b3cf9f5afd49117f
-  minitest (6.0.6) sha256=153ea36d1d987a62942382b61075745042a2b3123b1cd48f4c3675af9cc7d6f1
+  minitest (6.1.0) sha256=ff373595aa8888631e8a5463986a76b3845346ae6d7fa46e139c1633d418076e
   oxc (0.157.0-aarch64-linux-gnu) sha256=8ce02b1bf56435ea206a96c5dd670e3dfbcd12765b7233f51cb9de4b13ea1b66
   oxc (0.157.0-aarch64-linux-musl) sha256=953e5442e840e58966174c09fabda65e1370be5f1df8affbe34309440b31bfdc
   oxc (0.157.0-arm64-darwin) sha256=b8ac4fb5b15f92be9334c6f5e6670a24e08331961b574f26fad935a88d11b22e
@@ -275,12 +275,12 @@ CHECKSUMS
   rubocop-minitest (0.41.0) sha256=c15bfe00134a30c8a00ce670b07ecc80440455ba277b8682cf0d515c98ee7426
   ruby-progressbar (1.13.0) sha256=80fc9c47a9b640d6834e0dc7b3c94c9df37f08cb072b7761e4a71e22cff29b33
   safe_yaml (1.0.5) sha256=a6ac2d64b7eb027bdeeca1851fe7e7af0d668e133e8a88066a0c6f7087d9f848
-  sass-embedded (1.107.0-aarch64-linux-gnu) sha256=abfa28a5a670a86e8bb355be5e381c531da976379c75589737ac5f8c16b58272
-  sass-embedded (1.107.0-aarch64-linux-musl) sha256=a1f683ba22ff99cedff2bcebc6f9c828619d3ffe80553f110e1d7c977289ac1d
-  sass-embedded (1.107.0-arm64-darwin) sha256=38879bb9079a968d48b7709c0e5ad64532364333f2a20d4c999b8d588cd3ff72
-  sass-embedded (1.107.0-x86_64-darwin) sha256=f2e58cf60168fa306adeda9ce10acf82cb025287b8c476529850990c88ce5029
-  sass-embedded (1.107.0-x86_64-linux-gnu) sha256=a5fa930b9ce1ebb67155e09884f88895601bac7646aa61ded13106ecae89e0ea
-  sass-embedded (1.107.0-x86_64-linux-musl) sha256=e6f68d04a8d13382131d4abe197630c6052e370f2e226b376d9ffdf564991bf0
+  sass-embedded (1.108.1-aarch64-linux-gnu) sha256=a7cac64cc28957c576a1e6de523484998a3fe48d9758ecb0b4c43780837f43e8
+  sass-embedded (1.108.1-aarch64-linux-musl) sha256=475a60e1819eda24f240d13824741f0bc057aec63d9df435f3f9e6a1f425ed27
+  sass-embedded (1.108.1-arm64-darwin) sha256=4061b44a8b63c3ce4a1d4abb48930761c9baa83162ca0c6822ed3966c9ef8fb7
+  sass-embedded (1.108.1-x86_64-darwin) sha256=315e0ac7e856b31ee44371045f69414bad82aad1bd37c2b9a83c5e52dbbb4dca
+  sass-embedded (1.108.1-x86_64-linux-gnu) sha256=3329ea92fcde10624cb2195622f396bb8889ffafcef8a1582179b25d8b22eb12
+  sass-embedded (1.108.1-x86_64-linux-musl) sha256=b7bb19ad2c75889a4a29e5337e845602bdcdc6e3d492be12ca4684308c210959
   simplecov (1.3.2) sha256=2a22ec1759f1b8db60881a2e038758956fc69ef93ed669be0bde0678de6d0e85
   simplecov-cobertura (4.0.0) sha256=e4fb3159b1ecea545b44f5452a8611305323e78ad23eae8aed35924d072e01ea
   terminal-table (3.0.2) sha256=f951b6af5f3e00203fb290a669e0a85c5dd5b051b3b023392ccfd67ba5abae91
@@ -290,4 +290,4 @@ CHECKSUMS
   webrick (1.9.2) sha256=beb4a15fc474defed24a3bda4ffd88a490d517c9e4e6118c3edce59e45864131
 
 BUNDLED WITH
-  4.0.23
+  4.0.24
