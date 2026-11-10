@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
   DESC
   s.authors     = %w[gandaro gundestrup]
   s.homepage    = "https://github.com/gundestrup/jekyll-minify-flow"
-  s.license     = "MIT AND AGPL-3.0-or-later"
+  s.licenses    = ["MIT", "AGPL-3.0-or-later"]
   s.metadata    = {
     "source_code_uri" => "https://github.com/gundestrup/jekyll-minify-flow",
     "changelog_uri" => "https://github.com/gundestrup/jekyll-minify-flow/blob/main/CHANGELOG.md",
