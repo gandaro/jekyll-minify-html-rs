@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    jekyll-minify-flow (1.2.0)
+    jekyll-minify-flow (1.2.1)
       jekyll (>= 4.4, < 5.0)
       lightningcss (~> 1.33)
       minify_html (~> 0.18.1)
@@ -227,7 +227,7 @@ CHECKSUMS
   http_parser.rb (0.8.1) sha256=9ae8df145b39aa5398b2f90090d651c67bd8e2ebfe4507c966579f641e11097a
   i18n (1.15.2) sha256=00f9eb62412fe593b2a65a97daa75300d37abb8f7202ec748e94b6d46a9dd1b5
   jekyll (4.4.1) sha256=4c1144d857a5b2b80d45b8cf5138289579a9f8136aadfa6dd684b31fe2bc18c1
-  jekyll-minify-flow (1.2.0)
+  jekyll-minify-flow (1.2.1)
   jekyll-sass-converter (3.1.0) sha256=83925d84f1d134410c11d0c6643b0093e82e3a3cf127e90757a85294a3862443
   jekyll-test-harness (0.1.0.alpha) sha256=2b134cbe6c4db4f3a7a6d9e0be8b53ba18767c3c44a95366886924a306bfd98c
   jekyll-watch (2.2.1) sha256=bc44ed43f5e0a552836245a54dbff3ea7421ecc2856707e8a1ee203a8387a7e1

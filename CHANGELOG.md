@@ -10,6 +10,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [1.2.1] - 2026-11-10
+
 ### Added
 
 - `rake docs:demo` — captures the checked-in illustrative overview as
@@ -22,6 +24,11 @@ All notable changes to this project will be documented in this file.
 - In-range gem updates: `addressable` 2.9.1 → 2.9.2, `minitest`
   6.0.6 → 6.1.0, `sass-embedded` 1.107.0 → 1.108.1,
   `lightningcss` 1.33.0.2 → 1.33.0.3; `BUNDLED WITH` 4.0.23 → 4.0.24.
+- Gemspec `summary`/`description` now describe the full HTML + CSS +
+  JavaScript minification pipeline (previously HTML-only) and the
+  description is RDoc `==`-formatted so rubygems.org renders it as markup.
+- Gemspec `license` corrected to `MIT AND AGPL-3.0-or-later`, matching the
+  dual-licensed provenance (upstream MIT, fork work AGPL-3.0-or-later).
 - CI: `ruby/setup-ruby` pin bumped v1.335.0 → v1.338.0.
 
 ## [1.2.0] - 2026-11-07
