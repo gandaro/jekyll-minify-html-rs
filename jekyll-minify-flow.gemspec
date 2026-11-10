@@ -9,11 +9,21 @@ require_relative "lib/jekyll_minify_flow/version"
 Gem::Specification.new do |s|
   s.name        = "jekyll-minify-flow"
   s.version     = JekyllMinifyFlow::VERSION
-  s.summary     = "HTML minifier for Jekyll"
-  s.description = "A Jekyll plugin that uses the minify-html Rust crate to minify HTML files."
+  s.summary     = "HTML, CSS and JavaScript minifier for Jekyll"
+  # NOTE: rubygems.org renders the description through RDoc::Markup only
+  # when it starts with an == heading at column 0 — keep the heredoc
+  # content flush-left or the page renders as one plain <p>.
+  s.description = <<~DESC
+    == HTML, CSS and JS minification for Jekyll
+
+    Minifies rendered HTML pages and documents with the minify-html Rust
+    crate — inline CSS and JS included — plus standalone .css files with
+    Lightning CSS at post_write, ahead of fingerprint and compression
+    plugins.
+  DESC
   s.authors     = %w[gandaro gundestrup]
   s.homepage    = "https://github.com/gundestrup/jekyll-minify-flow"
-  s.license     = "AGPL-3.0-or-later"
+  s.license     = "MIT AND AGPL-3.0-or-later"
   s.metadata    = {
     "source_code_uri" => "https://github.com/gundestrup/jekyll-minify-flow",
     "changelog_uri" => "https://github.com/gundestrup/jekyll-minify-flow/blob/main/CHANGELOG.md",
