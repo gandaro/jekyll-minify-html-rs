@@ -1,0 +1,6 @@
+{
+    "sonarlint.connectedMode.project": {
+        "connectionId": "gundestrup",
+        "projectKey": "gundestrup_jekyll-minify-flow"
+    }
+}
