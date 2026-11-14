@@ -19,6 +19,11 @@ SimpleCov.start do
   end
 end
 
+# Bundler already loaded version.rb via the gemspec before SimpleCov.start;
+# reload it under Coverage so SonarCloud doesn't report its line as uncovered.
+JekyllMinifyFlow.send(:remove_const, :VERSION) if defined?(JekyllMinifyFlow::VERSION)
+load File.expand_path("../lib/jekyll_minify_flow/version.rb", __dir__)
+
 require "jekyll"
 require "jekyll-minify-flow"
 require "jekyll_test_harness"
